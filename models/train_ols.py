@@ -79,4 +79,5 @@ def evaluate_ols(model, X_test, y_test, threshold=0.5):
         save_path=os.path.join(PLOT_DIR, "pr_curve.png")
     )
 
+
     return probs

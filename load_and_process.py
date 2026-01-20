@@ -8,6 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 # SETTINGS
+
 OUT_DIR = "out"
 ARTIFACT_DIR = "artifacts"
 

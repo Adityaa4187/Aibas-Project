@@ -118,4 +118,5 @@ def compute_early_risk(row):
 
     explanation = "; ".join(reasons) if reasons else "No major early-risk signals triggered"
 
+
     return score, bucket, explanation

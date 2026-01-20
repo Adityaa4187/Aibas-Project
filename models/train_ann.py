@@ -102,6 +102,7 @@ def evaluate_ann(model, X_test, y_test, threshold=0.5):
         save_path=os.path.join(PLOT_DIR, "roc_curve.png")
     )
 
+
     plot_pr_curve(
         y_test, probs,
         title="ANN - PR Curve",

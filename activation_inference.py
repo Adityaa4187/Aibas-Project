@@ -72,9 +72,7 @@ def risk_bucket_from_prob(p: float):
 def run_activation_inference():
     os.makedirs(REPORTS_DIR, exist_ok=True)
 
-    # -------------------------
     # 1) Load activation row
-    # -------------------------
     act_df = pd.read_csv(ACT_PATH)
     if len(act_df) != 1:
         print(f"[WARNING] activation_data.csv has {len(act_df)} rows, expected 1. Using first row only.")
@@ -88,15 +86,11 @@ def run_activation_inference():
     print(f"Bucket: {early_bucket}")
     print(f"Reason: {early_reason}\n")
 
-    # -------------------------
     # 2) Load preprocessor + transform
-    # -------------------------
     preprocessor = joblib.load(PREPROCESSOR_PATH)
     X_act_enc = preprocessor.transform(act_df)
 
-    # -------------------------
     # 3) Load models
-    # -------------------------
     ols_model = joblib.load(OLS_PATH)
     logreg_model = joblib.load(LOGREG_PATH)
     rf_model = joblib.load(RF_PATH)
@@ -120,11 +114,10 @@ def run_activation_inference():
     X_dense = X_act_enc.toarray() if hasattr(X_act_enc, "toarray") else X_act_enc
     probs["ann"] = float(ann_model.predict(X_dense).ravel()[0])
 
-    # -------------------------
+
     # 5) Apply thresholds + build report
-    # -------------------------
     rows = []
-    print("\n================= ACTIVATION BLIND TEST =================\n")
+    print("\nACTIVATION BLIND TEST\n")
 
     for model_name, p in probs.items():
         thr = load_threshold(model_name)
