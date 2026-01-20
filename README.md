@@ -30,23 +30,25 @@ Downloaded from this repository (raw GitHub link is used internally): [Dataset](
 ---
 
 ## Project Structure
-![alt text](<img width="380" height="576" alt="image" src="https://github.com/user-attachments/assets/89f19edf-3780-44b3-be6e-3dc0aaf5f422" />)
+(<img width="380" height="576" alt="image" src="https://github.com/user-attachments/assets/89f19edf-3780-44b3-be6e-3dc0aaf5f422" />)
 
-After running the pipeline, these folders/files are created automatically:
+###  After running the pipeline, these folders/files are created automatically:
 
-![alt text](<img width="450" height="717" alt="image-1" src="https://github.com/user-attachments/assets/b99cc958-fa7a-4713-b675-370a2e22602c" />)
+(<img width="450" height="717" alt="image-1" src="https://github.com/user-attachments/assets/b99cc958-fa7a-4713-b675-370a2e22602c" />)
 
-Install dependencies
-install using setup.py
+## Install dependencies
+### install using setup.py
+    
     pip install -e .
 
 
-How to Run the Full Pipeline
-Simply run:
+## How to Run the Full Pipeline
+### Simply run:
+    
     python main.py
 
 
-This executes the complete workflow:
+### This executes the complete workflow:
 
 1. Download dataset from GitHub
 
@@ -61,7 +63,7 @@ This executes the complete workflow:
 6. Run blind activation inference + save report
 
 
-Notes
+### Notes
 
 1. The activation dataset is a single random row sampled from the test set (blind evaluation).
 
