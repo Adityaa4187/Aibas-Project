@@ -3,9 +3,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ==========================
 # EXISTING PLOTS (KEEP SAME)
-# ==========================
 def plot_numeric_corr(corr_sorted, out_dir):
     os.makedirs(out_dir, exist_ok=True)
 
@@ -43,10 +41,7 @@ def plot_cramers_v(cramer_series, out_dir):
     print(f"[SAVED] {out_path}")
 
 
-# ==========================
 # NEW MODEL PLOTS
-# ==========================
-
 def plot_confusion_matrix(cm, labels, title, save_path):
     """
     Plots confusion matrix and saves it.

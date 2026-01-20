@@ -39,7 +39,7 @@ def evaluate_logreg(model, X_test, y_test, threshold=0.5):
 
     cm = confusion_matrix(y_test, y_pred)
 
-    print("\n=========== LOGISTIC REGRESSION RESULTS ===========")
+    print("\n LOGISTIC REGRESSION RESULTS")
     print(f"ROC-AUC: {roc:.4f}")
     print(f"PR-AUC:  {pr:.4f}")
     print("Confusion Matrix:\n", cm)

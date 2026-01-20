@@ -79,15 +79,14 @@ def evaluate_ann(model, X_test, y_test, threshold=0.5):
 
     cm = confusion_matrix(y_test, y_pred)
 
-    print("\n================= ANN RESULTS =================")
+    print("\n ANN RESULTS")
     print(f"ROC-AUC: {roc:.4f}")
     print(f"PR-AUC:  {pr:.4f}")
     print("Confusion Matrix:\n", cm)
     print("Classification Report:\n", classification_report(y_test, y_pred))
 
-    # -------------------------
+
     # PLOTS (show + save)
-    # -------------------------
     os.makedirs(PLOT_DIR, exist_ok=True)
 
     plot_confusion_matrix(

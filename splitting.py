@@ -3,9 +3,7 @@ import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-# =========================
 # SETTINGS
-# =========================
 STEP1_PATH = os.path.join("data", "step1", "step1_cleaned_dataset.csv")
 OUT_DIR = "out"
 

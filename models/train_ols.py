@@ -49,7 +49,7 @@ def evaluate_ols(model, X_test, y_test, threshold=0.5):
 
     cm = confusion_matrix(y_test, y_pred)
 
-    print("\n================ OLS RESULTS ================")
+    print("\n\n OLS RESULTS")
     print(f"ROC-AUC: {roc:.4f}")
     print(f"PR-AUC:  {pr:.4f}")
     print("Confusion Matrix:\n", cm)

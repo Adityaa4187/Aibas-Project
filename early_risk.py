@@ -35,9 +35,7 @@ def compute_early_risk(row):
     overtime = _safe_get(row, "OverTime", None)               # Yes/No or 1/0
     years_in_role = _safe_get(row, "YearsInCurrentRole", None)
 
-    # -------------------------------
     # 1) YearsAtCompany (high weight)
-    # -------------------------------
     if years_at_company is not None:
         try:
             y = float(years_at_company)
@@ -55,9 +53,7 @@ def compute_early_risk(row):
         except Exception:
             pass
 
-    # -------------------------------
     # 2) JobLevel (low job level => more risk)
-    # -------------------------------
     if job_level is not None:
         try:
             jl = float(job_level)
@@ -72,9 +68,8 @@ def compute_early_risk(row):
         except Exception:
             pass
 
-    # -------------------------------
+
     # 3) TrainingTimesLastYear (low training => risk)
-    # -------------------------------
     if training_times is not None:
         try:
             t = float(training_times)
@@ -89,9 +84,7 @@ def compute_early_risk(row):
         except Exception:
             pass
 
-    # -------------------------------
     # Optional add-ons (if present)
-    # -------------------------------
     # OverTime -> risk up
     if overtime is not None:
         try:
