@@ -1,0 +1,12 @@
+numpy
+pandas
+requests
+beautifulsoup4
+scikit-learn
+joblib
+scipy
+statsmodels
+tensorflow
+matplotlib
+
+-e .
