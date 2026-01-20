@@ -30,11 +30,11 @@ Downloaded from this repository (raw GitHub link is used internally): [Dataset](
 ---
 
 ## Project Structure
-![alt text](image.png)
+![alt text](<img width="380" height="576" alt="image" src="https://github.com/user-attachments/assets/89f19edf-3780-44b3-be6e-3dc0aaf5f422" />)
 
 After running the pipeline, these folders/files are created automatically:
 
-![alt text](image-1.png)
+![alt text](<img width="450" height="717" alt="image-1" src="https://github.com/user-attachments/assets/b99cc958-fa7a-4713-b675-370a2e22602c" />)
 
 Install dependencies
 install using setup.py
