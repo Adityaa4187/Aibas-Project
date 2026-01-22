@@ -21,7 +21,6 @@ def split_dataset():
 
     # 1) Load step1 dataset
     df = pd.read_csv(STEP1_PATH)
-
     if TARGET not in df.columns:
         raise ValueError(f"[ERROR] Target column '{TARGET}' not found in step1 dataset!")
 
@@ -51,7 +50,6 @@ def split_dataset():
 
     print(f"[SAVED] {ACTIVATION_OUT} shape={activation_x.shape}")
     print("[INFO] Activation row index (from test):", activation_row.index.tolist())
-
 
 
 if __name__ == "__main__":

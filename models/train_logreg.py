@@ -17,11 +17,7 @@ PLOT_DIR = os.path.join("reports", "model_plots", "logreg")
 
 
 def train_logreg(X_train, y_train):
-    model = LogisticRegression(
-        max_iter=3000,
-        class_weight="balanced",
-        n_jobs=-1
-    )
+    model = LogisticRegression(max_iter=3000, class_weight="balanced", n_jobs=-1)
     model.fit(X_train, y_train)
 
     joblib.dump(model, MODEL_PATH)
@@ -36,7 +32,6 @@ def evaluate_logreg(model, X_test, y_test, threshold=0.5):
     pr = average_precision_score(y_test, probs)
 
     y_pred = (probs >= threshold).astype(int)
-
     cm = confusion_matrix(y_test, y_pred)
 
     print("\n LOGISTIC REGRESSION RESULTS")
@@ -68,6 +63,5 @@ def evaluate_logreg(model, X_test, y_test, threshold=0.5):
         title="Logistic Regression - PR Curve",
         save_path=os.path.join(PLOT_DIR, "pr_curve.png")
     )
-
 
     return probs

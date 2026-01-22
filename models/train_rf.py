@@ -37,7 +37,6 @@ def evaluate_rf(model, X_test, y_test, threshold=0.5):
     pr = average_precision_score(y_test, probs)
 
     y_pred = (probs >= threshold).astype(int)
-
     cm = confusion_matrix(y_test, y_pred)
 
     print("\nRANDOM FOREST RESULTS")
@@ -46,7 +45,6 @@ def evaluate_rf(model, X_test, y_test, threshold=0.5):
     print("Confusion Matrix:\n", cm)
     print("Classification Report:\n", classification_report(y_test, y_pred))
 
- 
     # PLOTS (show + save)
     os.makedirs(PLOT_DIR, exist_ok=True)
 
@@ -68,6 +66,5 @@ def evaluate_rf(model, X_test, y_test, threshold=0.5):
         title="Random Forest - PR Curve",
         save_path=os.path.join(PLOT_DIR, "pr_curve.png")
     )
-
 
     return probs

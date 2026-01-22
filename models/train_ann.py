@@ -70,13 +70,12 @@ def evaluate_ann(model, X_test, y_test, threshold=0.5):
     # ANN needs dense arrays
     X_test_dense = X_test.toarray() if hasattr(X_test, "toarray") else X_test
 
-    probs = model.predict(X_test_dense).ravel()
+    probs = model.predict(X_test_dense, verbose=0).ravel()
 
     roc = roc_auc_score(y_test, probs)
     pr = average_precision_score(y_test, probs)
 
     y_pred = (probs >= threshold).astype(int)
-
     cm = confusion_matrix(y_test, y_pred)
 
     print("\n ANN RESULTS")
@@ -84,7 +83,6 @@ def evaluate_ann(model, X_test, y_test, threshold=0.5):
     print(f"PR-AUC:  {pr:.4f}")
     print("Confusion Matrix:\n", cm)
     print("Classification Report:\n", classification_report(y_test, y_pred))
-
 
     # PLOTS (show + save)
     os.makedirs(PLOT_DIR, exist_ok=True)
@@ -101,7 +99,6 @@ def evaluate_ann(model, X_test, y_test, threshold=0.5):
         title="ANN - ROC Curve",
         save_path=os.path.join(PLOT_DIR, "roc_curve.png")
     )
-
 
     plot_pr_curve(
         y_test, probs,

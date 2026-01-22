@@ -42,8 +42,7 @@ def load_threshold(model_name: str):
     path = os.path.join(THRESH_DIR, f"{model_name}_threshold.txt")
     if os.path.exists(path):
         with open(path, "r") as f:
-            val = float(f.read().strip())
-        return val
+            return float(f.read().strip())
     return DEFAULT_THRESHOLD
 
 
@@ -53,6 +52,7 @@ def predict_proba_ols(model, X_enc):
     """
     X_dense = X_enc.toarray() if hasattr(X_enc, "toarray") else X_enc
     X_dense = sm.add_constant(X_dense, has_constant="add").astype(float)
+
     probs = model.predict(X_dense)
     probs = np.clip(probs, 0, 1)
     return float(probs[0])
@@ -64,7 +64,7 @@ def risk_bucket_from_prob(p: float):
     """
     if p < 0.33:
         return "Low"
-    elif p < 0.66:
+    if p < 0.66:
         return "Medium"
     return "High"
 
@@ -100,29 +100,23 @@ def run_activation_inference():
     # 4) Predict probabilities
     # -------------------------
     probs = {}
-
-    # OLS
     probs["ols"] = predict_proba_ols(ols_model, X_act_enc)
-
-    # Logistic Regression
     probs["logreg"] = float(logreg_model.predict_proba(X_act_enc)[:, 1][0])
-
-    # Random Forest
     probs["rf"] = float(rf_model.predict_proba(X_act_enc)[:, 1][0])
 
     # ANN (needs dense)
     X_dense = X_act_enc.toarray() if hasattr(X_act_enc, "toarray") else X_act_enc
-    probs["ann"] = float(ann_model.predict(X_dense).ravel()[0])
-
+    probs["ann"] = float(ann_model.predict(X_dense, verbose=0).ravel()[0])
 
     # 5) Apply thresholds + build report
     rows = []
     print("\nACTIVATION BLIND TEST\n")
 
-    for model_name, p in probs.items():
+    for model_name in probs:
+        p = probs[model_name]
         thr = load_threshold(model_name)
-        pred_class = 1 if p >= thr else 0
 
+        pred_class = 1 if p >= thr else 0
         decision = "LEAVE (Attrition=1)" if pred_class == 1 else "STAY (Attrition=0)"
         risk = risk_bucket_from_prob(p)
 

@@ -34,9 +34,9 @@ def train_ols(X_train, y_train):
 def predict_proba_ols(model, X):
     X_dense = X.toarray() if hasattr(X, "toarray") else X
     X_dense = sm.add_constant(X_dense, has_constant="add").astype(float)
+
     probs = model.predict(X_dense)
-    probs = np.clip(probs, 0, 1)  # OLS can exceed [0,1]
-    return probs
+    return np.clip(probs, 0, 1)  # OLS can exceed [0,1]
 
 
 def evaluate_ols(model, X_test, y_test, threshold=0.5):
@@ -46,7 +46,6 @@ def evaluate_ols(model, X_test, y_test, threshold=0.5):
     pr = average_precision_score(y_test, probs)
 
     y_pred = (probs >= threshold).astype(int)
-
     cm = confusion_matrix(y_test, y_pred)
 
     print("\n\n OLS RESULTS")
@@ -78,6 +77,5 @@ def evaluate_ols(model, X_test, y_test, threshold=0.5):
         title="OLS - PR Curve",
         save_path=os.path.join(PLOT_DIR, "pr_curve.png")
     )
-
 
     return probs
