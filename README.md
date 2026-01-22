@@ -40,10 +40,12 @@ Downloaded from this repository (raw GitHub link is used internally): [Dataset](
     pip install -e .
 
 ## How to Run the Full Pipeline
-### Simply run:
+### Simply run for Windows:
     
     python main.py
 
+### For MacOS:
+    python3 main.py
 
 ### This executes the complete workflow:
 1. Download dataset from GitHub
